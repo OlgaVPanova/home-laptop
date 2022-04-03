@@ -1,0 +1,113 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+    public Main() {
+    }
+
+    public static void main(String[] args) {
+        double rateUSD = 85.75D;
+        double rateEUR = 94.71D;
+        double rateCZK = 3.89D;
+        Scanner moneyInUse = new Scanner(System.in);
+        System.out.println("Сколько денег у вас осталось до зарплаты?");
+        double moneyBeforeSalary = moneyInUse.nextDouble();
+        System.out.println("Сколько дней осталось до зарплаты?");
+        int daysBeforeSalary = moneyInUse.nextInt();
+        System.out.println("Введите команду. Доступные команды: advice и convert");
+        String command = moneyInUse.next();
+        String spending;
+        if (command.equals("convert")) {
+            System.out.println("В какую валюту вы хотите конвертировать рубли? Доступные варианты: USD, EUR, CZK");
+            spending = moneyInUse.next();
+            if (spending.equals("USD")) {
+                System.out.println("Ваши сбережения в долларах: " + moneyBeforeSalary / rateUSD);
+            } else if (spending.equals("EUR")) {
+                System.out.println("Ваши сбережения в евро: " + moneyBeforeSalary / rateEUR);
+            } else if (spending.equals("CZK")) {
+                System.out.println("Ваши сбережения в чешских кронах: " + moneyBeforeSalary / rateCZK);
+            } else {
+                System.out.println("Валюта не поддерживается:(");
+            }
+        } else if (command.equals("advice")) {
+            if (moneyBeforeSalary < 5000.0D) {
+                if (daysBeforeSalary > 10) {
+                    System.out.println("Сегодня лучше поесть дома. Вам еще могут пригодиться ваши сбережения.");
+                } else {
+                    System.out.println("Предвидятся ли крупные траты до получения зарплаты?");
+                    spending = moneyInUse.next();
+                    if (spending.equals("Да")) {
+                        System.out.println("Сегодня лучше поесть дома. Вам еще могут пригодиться ваши сбережения.");
+                    } else {
+                        System.out.println("Можно купить что-то готовое во Вкусвилл, но не сильно шиковать.");
+                    }
+                }
+            } else if (moneyBeforeSalary < 15000.0D) {
+                if (daysBeforeSalary > 10) {
+                    System.out.println("Можно купить что-то готовое во Вкусвилл, но не сильно шиковать.");
+                } else {
+                    System.out.println("На завтрак или обед можно сходить покушать в кафе.");
+                }
+            } else if (daysBeforeSalary > 10) {
+                System.out.println("Можете несколько раз в неделю сходить в кафе или рестораны, но в разумных пределах.");
+            } else {
+                System.out.println("Можете позволить себе ужин в ресторане!");
+            }
+
+            System.out.println("В день рекомендуем тратить не более " + moneyBeforeSalary / (double)daysBeforeSalary + " рублей.");
+        } else {
+            System.out.println("Извините, такой команды пока нет");
+        }
+
+        System.out.println("Хотите ввести другую команду?");
+        spending = moneyInUse.next();
+        if (spending.equals("Да")) {
+            System.out.println("Введите команду. Доступные команды: advice и convert");
+            String command2 = moneyInUse.next();
+            String spending;
+            if (command2.equals("convert")) {
+                System.out.println("В какую валюту вы хотите конвертировать рубли? Доступные варианты: USD, EUR, CZK");
+                spending = moneyInUse.next();
+                if (spending.equals("USD")) {
+                    System.out.println("Ваши сбережения в долларах: " + moneyBeforeSalary / rateUSD);
+                } else if (spending.equals("EUR")) {
+                    System.out.println("Ваши сбережения в евро: " + moneyBeforeSalary / rateEUR);
+                } else if (spending.equals("CZK")) {
+                    System.out.println("Ваши сюережения в чешских кронах: " + moneyBeforeSalary / rateCZK);
+                } else {
+                    System.out.println("Валюта не поддерживается:(");
+                }
+            } else if (command2.equals("advice")) {
+                if (moneyBeforeSalary < 5000.0D) {
+                    if (daysBeforeSalary > 10) {
+                        System.out.println("Сегодня лучше поесть дома. Вам еще могут пригодиться ваши сбережения.");
+                    } else {
+                        System.out.println("Предвидятся ли крупные траты до получения зарплаты?");
+                        spending = moneyInUse.next();
+                        if (spending.equals("Да")) {
+                            System.out.println("Сегодня лучше поесть дома. Вам еще могут пригодиться ваши сбережения.");
+                        } else {
+                            System.out.println("Можно купить что-то готовое во Вкусвилл, но не сильно шиковать.");
+                        }
+                    }
+                } else if (moneyBeforeSalary < 15000.0D) {
+                    if (daysBeforeSalary > 10) {
+                        System.out.println("Можно купить что-то готовое во Вкусвилл, но не сильно шиковать.");
+                    } else {
+                        System.out.println("На завтрак или обед можно сходить покушать в кафе.");
+                    }
+                } else if (daysBeforeSalary > 10) {
+                    System.out.println("Можете несколько раз в неделю сходить в кафе или рестораны, но в разумных пределах.");
+                } else {
+                    System.out.println("Можете позволить себе ужин в ресторане!");
+                }
+
+                System.out.println("В день рекомендуем тратить не более " + moneyBeforeSalary / (double)daysBeforeSalary + " рублей.");
+            } else {
+                System.out.println("Извините, такой команды пока нет");
+            }
+        }
+
+    }
+}
